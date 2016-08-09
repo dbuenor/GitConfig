@@ -1,0 +1,3 @@
+credential.helper=manager
+alias.addt4=add Veritas.WebSite/App_Facilities/T4MVC/
+alias.delt4=checkout -- Veritas.WebSite/App_Facilities/T4MVC/
