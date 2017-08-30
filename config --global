@@ -1,8 +1,8 @@
 [user]
-        email = dbueno@evicertia.com
-        name = David Bueno
+        email = david@evicertia.com
+        name = David
 [core]
-        autocrlf = false
+        autocrlf = true
 [alias]
         merge-diff = !bash -c 'git diff $(git merge-base $1 $2) $2 ${@: 3} ' -
         st = status
@@ -19,6 +19,8 @@
         cl = clean -f
         rmb = push origin --delete
         bm = branch --merged origin/master -a
+        ## Copy current branch name to clipboard
+        cpbr = git rev-parse --abbrev-ref HEAD | tr -d '\n' | clip
 [merge]
         tool = vsdiffmerge
 [mergetool "p4merge"]
@@ -27,6 +29,7 @@
         path = D:\\Software\\Meld\\Meld.exe
 [mergetool "vsdiffmerge"]
         cmd = \"vsdiffmerge.exe\" \"$REMOTE\" \"$LOCAL\" \"$BASE\" \"$MERGED\" //m
+#       cmd = \"C:\\Program Files (x86)\\Microsoft Visual Studio 14.0\\Common7\\IDE\\vsdiffmerge.exe\" \"$REMOTE\" \"$LOCAL\" \"$BASE\" \"$MERGED\" //m
         keepBackup = false
 [color "diff"]
         whitespace = red reverse
