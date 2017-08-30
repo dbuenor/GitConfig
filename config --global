@@ -21,6 +21,10 @@
         bm = branch --merged origin/master -a
         ## Copy current branch name to clipboard
         cpbr = git rev-parse --abbrev-ref HEAD | tr -d '\n' | clip
+        ## cpbr=!f() {\
+        ## git rev-parse --abbrev-ref HEAD | tr -d '\n' | clip; 
+        ## }; f
+
 [merge]
         tool = vsdiffmerge
 [mergetool "p4merge"]
