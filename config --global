@@ -2,7 +2,7 @@
         email = david@evicertia.com
         name = David
 [core]
-        autocrlf = true
+        autocrlf = false
 [alias]
         merge-diff = !bash -c 'git diff $(git merge-base $1 $2) $2 ${@: 3} ' -
         st = status
@@ -17,26 +17,24 @@
         re = reset
         rh = reset --hard
         cl = clean -f
-        rmb = push origin --delete
+        rm = !bash -c 'git branch -d $1 && git push -d origin $1 ' -
+        rmforce = !bash -c 'git branch -D $1 && git push -d origin $1' -
+        test = !git push -d origin $1
         bm = branch --merged origin/master -a
-        ## Copy current branch name to clipboard
+        pf = push -f
         cpbr = !git rev-parse --abbrev-ref HEAD | tr -d '\\n' | clip
-        ## cpbr=!f() {\
-        ## git rev-parse --abbrev-ref HEAD | tr -d '\n' | clip; 
-        ## }; f
-
+        cp = cherry-pick
+        fe = fetch --all
+        ren = branch -m
+        ignore = update-index --assume-unchanged
+        unignore = update-index --no-assume-unchanged
+        ignored = !git ls-files -v | grep "^[[:lower:]]"
+        commitadd = commit -a --amend --no-edit
 [merge]
         tool = vsdiffmerge
-[mergetool "p4merge"]
-        path = D:\\Software\\P4Merge\\p4merge.exe
-[mergetool "meld"]
-        path = D:\\Software\\Meld\\Meld.exe
 [mergetool "vsdiffmerge"]
         cmd = \"vsdiffmerge.exe\" \"$REMOTE\" \"$LOCAL\" \"$BASE\" \"$MERGED\" //m
-#       cmd = \"C:\\Program Files (x86)\\Microsoft Visual Studio 14.0\\Common7\\IDE\\vsdiffmerge.exe\" \"$REMOTE\" \"$LOCAL\" \"$BASE\" \"$MERGED\" //m
         keepBackup = false
-[color "diff"]
-        whitespace = red reverse
 [color]
         diff = auto
 [push]
